@@ -1,4 +1,4 @@
 class Studio < ApplicationRecord
   belongs_to :user
-  has_many :courses, dependant: :destroy
+  has_many :courses, dependent: :destroy
 end

@@ -1,0 +1,10 @@
+<h1>Studios#new</h1>
+<p>Find me in app/views/studios/new.html.erb</p>
+
+
+<%= simple_form_for @studio do |f| %>
+    <%= f.input :name%>
+    <%= f.input :description %>
+    <%= f.input :phone %>
+    <%= f.submit %>
+<% end %>
