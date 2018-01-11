@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
 
+  devise_for :contacts
   devise_for :users
   root to: 'pages#home'
 
   resources :users
+  resources :contacts
 
   resources :studios do
     resources :courses, only: [:create, :new]
@@ -21,5 +23,5 @@ Rails.application.routes.draw do
 # end
 
 
-# resources :courses, only: [:index, :show, :update, :edit, :destroy]
+# resources :courses, only: [:index, :show, :updater, :edit, :destroy]
 end

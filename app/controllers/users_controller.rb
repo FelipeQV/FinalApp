@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authenticate_user!
+  #skip_before_action :authenticate_user!
 
   def show
-    @user = current_user
+    @contact = current_contact
   end
 
   def new
@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(params_user)
-    redirect_to user_path(current_user)
+    current_contact.update(params_contact)
+    redirect_to user_path(current_contact)
   end
 
   def destroy
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
 
   private
   def params_user
-    params.require(:user).permit!
+    params.require(:contact).permit!
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @contact = Contact.find(params[:id])
   end
 
 end

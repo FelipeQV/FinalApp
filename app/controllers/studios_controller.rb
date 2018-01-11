@@ -9,13 +9,13 @@ class StudiosController < ApplicationController
   end
 
   def new
-    @user = current_user
+    @contact = current_contact
     @studio = Studio.new
   end
 
   def create
     @studio = Studio.new(studio_params)
-    @studio.user = current_user
+    @studio.contact = current_contact
 
     if @studio.save
       redirect_to studio_path(@studio)
