@@ -1,4 +1,5 @@
 <h1>Studios#show</h1>
 <p>Find me in app/views/studios/show.html.erb</p>
 <%= @studio.name %>
-<% raise %>
+
+<%= link_to "create course", new_studio_course_path(@studio) %>
