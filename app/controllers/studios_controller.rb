@@ -15,7 +15,7 @@ class StudiosController < ApplicationController
 
   def create
     @studio = Studio.new(studio_params)
-    @studio.contact = current_contactr
+    @studio.contact = current_contact
 
     if @studio.save
       redirect_to studio_path(@studio)

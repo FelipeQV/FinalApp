@@ -1,9 +1,27 @@
 Rails.application.routes.draw do
 
+  namespace :dashboard do
+    authenticated :student do
+      resources :subjects, module: "student"
+    end
+    authenticated :manager do
+      resources :subjects, module: "manager"
+    end
+root to: "dashboard#index"
+    end
+
+
+
+
+
+
   devise_for :contacts
   devise_for :users
 
-  root to: 'pages#home'
+  devise_for :students
+  devise_for :managers
+
+  root to: 'dashboard/dashboard#index'
 
   resources :users
   resources :contacts
