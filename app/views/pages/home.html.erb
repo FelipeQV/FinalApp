@@ -4,4 +4,16 @@
 <%= link_to "become a teacher", new_studio_path %>
 
 
-<%= Studio.all.name %>
+<h1> Studios </h1>
+
+<% @studios.each do |studio| %>
+<h1>Studio name: <%= studio.name %></h1>
+courses:
+<% studio.courses.each do |course| %>
+<%= link_to course.name, course_path(course) %>
+
+<h2>Course name :<%= course.name %> of studio <%=studio.name%></h2>
+
+
+<%end%>
+<% end%>
