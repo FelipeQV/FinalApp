@@ -3,3 +3,15 @@
 
 <%= @course.name %>
 
+<%= "Reviews" %>
+
+ <% @course.reviews.each do |r| %>
+
+<h2>review:<%= r.content %> </h2>
+
+
+<%end%>
+
+
+<%= link_to "review this course", new_course_review_path(@course) %>
+

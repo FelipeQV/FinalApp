@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
     @reviews = Review.all
@@ -10,10 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @course = Course.find(params[:course_id])
-    @review = Review.new
-    @review.course = @course
-    @review.user = current_user
+@course = Course.find(params[:course_id])
+@review = Review.new
   end
 
   def create
@@ -26,7 +23,7 @@ class ReviewsController < ApplicationController
       redirect_to course_path(@course)
     else
       render :new
-
+    end
   end
 
   def edit
@@ -40,12 +37,9 @@ class ReviewsController < ApplicationController
 
   private
 
-  def set_review
-    @review = Course.find(params[:id])
-  end
 
   def review_params
     params.require(:review).permit(:course_id, :content, :stars, :user_id)
   end
 end
-end
+

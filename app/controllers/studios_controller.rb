@@ -9,13 +9,16 @@ class StudiosController < ApplicationController
   end
 
   def new
-    @contact = current_contact
+    @user = current_user
     @studio = Studio.new
+
   end
+
 
   def create
     @studio = Studio.new(studio_params)
-    @studio.contact = current_contactr
+    @studio.user = current_user
+
 
     if @studio.save
       redirect_to studio_path(@studio)
@@ -43,7 +46,7 @@ end
   private
 
   def studio_params
-    params.require(:studio).permit(:name, :description, :phone)
+    params.require(:studio).permit( :current_user, :name, :description, :phone)
   end
 
    def set_studio

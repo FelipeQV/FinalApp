@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @reviews = Review.where(course_id: @course.id)
   end
 
   def new
