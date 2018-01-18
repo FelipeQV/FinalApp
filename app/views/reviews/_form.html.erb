@@ -1,9 +1,7 @@
 
-<%= @review.errors.full_message.each do |message| %>
-  <%= message%>
-  <%end%>
 
-<%= simple_form_for [@course, @review] do |f| %>
+
+<%= simple_form_for ([@course, @review]) do |f| %>
 <%= f.input :content %>
 <%= f.input :stars %>
 <%= f.button :submit %>

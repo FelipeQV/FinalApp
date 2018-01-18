@@ -15,7 +15,6 @@
     <%= render 'reviews/show', review: review  %>
   <%end%>
 <%end%>
+x
 
-
-<%= link_to "review this course", new_course_review_path(@course) %>
-
+<%= render 'reviews/form', course: @course, review: @review %>

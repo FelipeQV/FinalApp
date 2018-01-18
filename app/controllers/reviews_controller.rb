@@ -9,20 +9,20 @@ class ReviewsController < ApplicationController
   end
 
   def new
-@review = Review.new
-@course = Course.find(params[:course_id])
+    @review = Review.new
+    @course = Course.find(params[:course_id])
   end
 
   def create
-    @review = Review.new(review_params)
     @course = Course.find(params[:course_id])
+    @review = Review.new(review_params)
     @review.course = @course
     @review.user = current_user
 
     if @review.save
       redirect_to course_path(@course)
     else
-      render :new
+      render 'courses/show'
     end
   end
 
