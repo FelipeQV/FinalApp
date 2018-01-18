@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-@course = Course.find(params[:course_id])
 @review = Review.new
+@course = Course.find(params[:course_id])
   end
 
   def create

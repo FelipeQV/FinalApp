@@ -3,13 +3,17 @@
 
 <%= @course.name %>
 
-<%= "Reviews" %>
-
- <% @course.reviews.each do |r| %>
-
-<h2>review:<%= r.content %> </h2>
+<h2>
+  <%= pluralize @course.reviews.size, "Review" %>
+</h2>
 
 
+<% if @course.reviews.blank? %>
+  <%= "be the first to leave a review" %>
+  <% else %>
+    <% @course.reviews.each do |review| %>
+    <%= render 'reviews/show', review: review  %>
+  <%end%>
 <%end%>
 
 
