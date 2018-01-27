@@ -1,20 +1,35 @@
 <h1>Courses#show</h1>
 <p>Find me in app/views/courses/show.html.erb</p>
+____________
+<br>
+
+<% @categories.each do |c| %>
+<%= c.name %>
+<%end%>
+<br>
+__________
+
+<br>
 
 <%= @course.name %>
 
 <h2>
+
+  <% @course.categories.each do |cat| %>
+  <%= cat.name %>
+  <% end %>
+
   <%= pluralize @course.reviews.size, "Review" %>
 </h2>
 
 
 <% if @course.reviews.blank? %>
-  <%= "be the first to leave a review" %>
-  <% else %>
-    <% @course.reviews.each do |review| %>
-    <%= render 'reviews/show', review: review  %>
-  <%end%>
+<%= "be the first to leave a review" %>
+<% else %>
+<% @course.reviews.each do |review| %>
+<%= render 'reviews/show', review: review  %>
 <%end%>
-x
+<%end%>
+
 
 <%= render 'reviews/form', course: @course, review: @review %>
