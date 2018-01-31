@@ -23,7 +23,6 @@ class CoursesController < ApplicationController
     @studio = Studio.find(params[:studio_id])
     @course = Course.new(course_params)
     @course.studio = @studio
-    #@categories = params[:category_ids]
 
     if @course.save
       redirect_to course_path(@course)
