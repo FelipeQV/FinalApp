@@ -2,6 +2,14 @@
 
 <% @categories.each do |category| %>
 <%= link_to category.name, category_path(category) %>
+
+
+<%= simple_form_for category, url: category_favorites_path(category), method: :post do |f| %>
+      <%= f.submit "Favorite this" %> <span><i class="fa fa-heart"></i></span>
+      <% end %>
+
+
+
 <% end %>
 
 
