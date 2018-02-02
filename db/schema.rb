@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126175458) do
+ActiveRecord::Schema.define(version: 20180201022709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20180126175458) do
     t.datetime "updated_at", null: false
     t.bigint "studio_id"
     t.index ["studio_id"], name: "index_courses_on_studio_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_favorites_on_category_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "has_categories", force: :cascade do |t|
@@ -74,10 +83,12 @@ ActiveRecord::Schema.define(version: 20180126175458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "categories"
+  add_foreign_key "favorites", "users"
   add_foreign_key "has_categories", "categories"
   add_foreign_key "has_categories", "courses"
   add_foreign_key "reviews", "courses"

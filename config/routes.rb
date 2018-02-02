@@ -6,10 +6,16 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get 'favourites/create'
+
+  resources :categories do
+    resources :favorites
+  end
 
   resources :studios do
-  resources :courses, only: [:create, :new]
+    resources :courses, only: [:create, :new]
   end
+
 
   resources :courses, only: [:index, :update, :show, :edit, :destroy] do
     resources :reviews, only: [:index, :new, :create, :destroy]

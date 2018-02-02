@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authenticate_user!
+  #skip_before_action :authenticate_user!
 
   def show
     @user = current_user
+    @favorites = current_user.favorite_categories
+
   end
 
   def new

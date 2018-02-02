@@ -7,4 +7,12 @@ class User < ApplicationRecord
          has_one :studio, dependent: :destroy
          has_many :reviews, dependent: :destroy
 
+
+
+           has_many :favorites
+           has_many :favorite_categories, through: :favorites, source: :category
+
+           validates :email, presence: true, uniqueness: true
+
+
 end

@@ -1,2 +1,7 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<% @favorites.each_with_index do |favorite, index| %>
+ <%= favorite.name  %>,
+  <% end %>
+
